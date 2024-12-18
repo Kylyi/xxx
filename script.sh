@@ -15,5 +15,5 @@ gs \
   -dEmbedAllFonts=true \
   -sFONTPATH=. \
   -sOutputFile=./Zadost-a3.pdf \
-  PDFA_def.ps \
+  ./PDFA_def.ps \
   ./Zadost.pdf
