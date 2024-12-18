@@ -8,7 +8,25 @@ const pdfaDefPath = 'PDFA_def.ps'
 
 export async function convertToPDFA3b(path: string) {
   const outPath = path.replace('.pdf', '_a3.pdf')
-  const command = `gs -dNOSAFER -dPDFA=3 -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sOutputFile=${outPath} -dPDFACompatibilityPolicy=1 -sColorConversionStrategy=RGB -sDefaultRGBProfile=${iccFilePath} ${pdfaDefPath} ${path}`
+  const command = `gs \
+  --permit-devices=pdfwrite \
+  --permit-file-read='*' \
+  -dPDFA=3 \
+  -dBATCH \
+  -dNOPAUSE \
+  -dNOOUTERSAVE \
+  -dUseCIEColor=true \
+  -sColorConversionStrategy=sRGB \
+  -sProcessColorModel=DeviceRGB \
+  -dConvertCMYKImagesToRGB=true \
+  -dConvertGrayImagesToRGB=true \
+  -sDEVICE=pdfwrite \
+  -dPDFACompatibilityPolicy=1 \
+  -dEmbedAllFonts=true \
+  -sFONTPATH=. \
+  -sOutputFile=${outPath} \
+  ${pdfaDefPath} \
+  ${path}`
 
   try {
     const { stdout, stderr } = await execAsync(command)
@@ -26,4 +44,4 @@ export async function convertToPDFA3b(path: string) {
   }
 }
 
-await convertToPDFA3b('input.pdf')
+await convertToPDFA3b('Zadost.pdf')

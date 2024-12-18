@@ -1,0 +1,14 @@
+%!
+% PDFA_def.ps for sRGB output
+% This sets an OutputIntent dictionary for sRGB, required for PDF/A-3.
+
+[ /ICCProfile (sRGB.icc)
+  /Info (sRGB IEC61966-2.1)
+  /OutputConditionIdentifier (sRGB)
+  /Type /OutputIntent
+  /S /GTS_PDFA1
+] /OutputIntent exch def
+
+<<
+  /OutputIntents [OutputIntent]
+>> setdistillerparams

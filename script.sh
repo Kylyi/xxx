@@ -1,0 +1,19 @@
+gs \
+  --permit-devices=pdfwrite \
+  --permit-file-read='*' \
+  -dPDFA=3 \
+  -dBATCH \
+  -dNOPAUSE \
+  -dNOOUTERSAVE \
+  -dUseCIEColor=true \
+  -sColorConversionStrategy=sRGB \
+  -sProcessColorModel=DeviceRGB \
+  -dConvertCMYKImagesToRGB=true \
+  -dConvertGrayImagesToRGB=true \
+  -sDEVICE=pdfwrite \
+  -dPDFACompatibilityPolicy=1 \
+  -dEmbedAllFonts=true \
+  -sFONTPATH=. \
+  -sOutputFile=./Zadost-a3.pdf \
+  PDFA_def.ps \
+  ./Zadost.pdf
